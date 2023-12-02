@@ -1,0 +1,13 @@
+.navbar-nav {
+    .nav-link {
+      color: #04395E;
+      margin-right: 15px;
+      ;
+    }
+  
+    .nav-link:hover {
+      color: #04395E;
+      margin-right: 15px
+    }
+  }
+  

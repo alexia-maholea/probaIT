@@ -1,0 +1,12 @@
+{
+    "links": [
+        {
+            "label": "Login",
+            "href": "/login"
+        },
+        {
+            "label": "Register",
+            "href": "/register"
+        }
+    ]
+}
