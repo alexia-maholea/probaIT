@@ -45,7 +45,7 @@ interface CreatePollProps {
         <Modal.Title>Create Poll</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+      <Form className="d-grid gap-2">
           <Form.Group className="mb-3">
             <Form.Label>Title</Form.Label>
             <Form.Control
