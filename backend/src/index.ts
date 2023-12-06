@@ -14,49 +14,6 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static("public"));
 
-app.set("view engine", "jsx");
-
-// app.get("/", (req, res) => {
-//   res.render("login");
-// });
-app.get("/", (req, res) => {
-  res.json({page: "login"});
-});
-
-
-// app.get("/register", (req, res) => {
-//   res.render("register");
-// });
-
-app.get("/register", (req, res) => {
-  res.json({page: "register"});
-});
-
-// app.post("/register", async (req, res) => {
-//   // try {
-//     console.log("Received registration request:", req.body);
-
-//     const data = {
-//       username: req.body.username,
-//       password: req.body.password
-//     };
-
-//     const existingUser = await collection.findOne({ username: data.username });
-//     if (existingUser) {
-//       res.send("User already exists. Please choose a different username.");
-//     } else {
-//       console.log("Data to be inserted:", data);
-//       // hash the password
-
-//       const saltRounds = 10;
-//       const hashedPassword = await bcrypt.hash(data.password, saltRounds);
-
-//       data.password = hashedPassword;   // replace the plain text password with the hashed password
-
-//       const userdata = await collection.insertMany(data);
-//       console.log("User registered successfully:", userdata);  
-//     }
-// });
 
 app.post("/register", async (req, res) => {
   try {
@@ -75,32 +32,12 @@ app.post("/register", async (req, res) => {
       data.password = hashedPassword;
 
       const userdata = await collection.insertMany(data);
-      res.json({ success: true, page: "login" });
+      res.json({ success: true});
     }
   } catch {
     res.json({ error: "Internal error during user registration." });
   }
 });
-
-
-// app.post("/login", async (req, res) => {
-//   try {
-//     const check = await collection.findOne({ username: req.body.username });
-//     if (!check) {
-//       res.send("User not found");
-//     }
-
-//     // check if the password is correct
-//     const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
-//     if (isPasswordMatch) {
-//       res.render("home");
-//     } else {
-//       res.send("Incorrect password");
-//     }
-//   } catch {
-//     res.send("Wrong username or password")
-//   }
-// });
 
 
 app.post("/login", async (req, res) => {
@@ -112,7 +49,7 @@ app.post("/login", async (req, res) => {
 
     const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
     if (isPasswordMatch) {
-      res.json({ success: true, page: "home" });
+      res.json({ success: true});
     } else {
       res.json({ error: "Incorrect password" });
     }
