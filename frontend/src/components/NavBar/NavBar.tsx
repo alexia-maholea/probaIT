@@ -3,17 +3,22 @@ import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from '../Login';
 import Register from '../Register';
+import CreatePoll from '../CreatePoll';
 
 const NavBar = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [showRegisterModal, setShowRegisterModal] = useState(false); // Adăugat pentru gestionarea stării modale de înregistrare
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Adăugat pentru gestionarea stării autentificării
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [showCreatePollModal, setShowCreatePollModal] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleLoginModalShow = () => setShowLoginModal(true);
   const handleLoginModalClose = () => setShowLoginModal(false);
 
   const handleRegisterModalShow = () => setShowRegisterModal(true);
   const handleRegisterModalClose = () => setShowRegisterModal(false);
+
+  const handleCreatePollModalShow = () => setShowCreatePollModal(true);
+  const handleCreatePollModalClose = () => setShowCreatePollModal(false);
 
   const handleLoginSuccess = (token: string) => {
     console.log('Login successful. Token:', token);
@@ -30,6 +35,16 @@ const NavBar = () => {
 
   };
 
+  const handleCreatePoll = () => {
+    console.log('Create poll');
+
+    handleRegisterModalClose();
+    setIsAuthenticated(true);
+  };
+
+  const handleCloseCreatePollModal = () => {
+    setShowCreatePollModal(false);
+  };  
 
   const handleLogout = () => {
     setIsAuthenticated(false);
@@ -75,7 +90,7 @@ const NavBar = () => {
             {isAuthenticated && (
               <>
               <li className="nav-item">
-                <Button variant="primary" onClick={handleLogout}>
+              <Button variant="primary" onClick={handleCreatePollModalShow}>
                   Create Poll
                 </Button>
               </li>
@@ -116,7 +131,16 @@ const NavBar = () => {
           <Register onRegisterSuccess={handleRegisterSuccess} />
         </Modal.Body>
       </Modal>
-      </div>
+
+      {/* Modalul de Create Poll */}
+      {!isAuthenticated && (
+      <CreatePoll
+        show={showCreatePollModal}
+        onCreateSuccess={handleCreatePollModalClose}
+        onCancel={handleCreatePollModalClose}
+    />
+    )}
+    </div>
   );
 };
 
