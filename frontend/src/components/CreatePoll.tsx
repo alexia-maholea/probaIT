@@ -4,22 +4,22 @@ import { Form, Button, Modal } from 'react-bootstrap';
 import axios from 'axios';
 
 interface CreatePollProps {
-    onCreateSuccess: () => void;
-    onCancel: () => void;
-    show: boolean;
-  }
-  
+  onCreateSuccess: () => void;
+  onCancel: () => void;
+  show: boolean;
+}
 
-  const CreatePoll: React.FC<CreatePollProps> = ({ onCreateSuccess, onCancel, show }) => {
-    const [title, setTitle] = useState('');
-    const [votingType, setVotingType] = useState('single');
-    const [options, setOptions] = useState(['']);
 
-    const handleOptionChange = (index: number, value: string) => {
-        const newOptions = [...options];
-        newOptions[index] = value;
-        setOptions(newOptions);
-    };
+const CreatePoll: React.FC<CreatePollProps> = ({ onCreateSuccess, onCancel, show }) => {
+  const [title, setTitle] = useState('');
+  const [votingType, setVotingType] = useState('single');
+  const [options, setOptions] = useState(['']);
+
+  const handleOptionChange = (index: number, value: string) => {
+    const newOptions = [...options];
+    newOptions[index] = value;
+    setOptions(newOptions);
+  };
 
   const handleAddOption = () => {
     setOptions([...options, '']);
@@ -27,7 +27,7 @@ interface CreatePollProps {
 
   const handleCreatePoll = async () => {
     try {
-      const response = await axios.post('/create-poll', { title, votingType, options });
+      const response = await axios.post('http://127.0.0.1:3001/create-poll', { title, votingType, options });
 
       if (response.data.success) {
         onCreateSuccess();
@@ -45,7 +45,7 @@ interface CreatePollProps {
         <Modal.Title>Create Poll</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      <Form className="d-grid gap-2">
+        <Form className="d-grid gap-2">
           <Form.Group className="mb-3">
             <Form.Label>Title</Form.Label>
             <Form.Control

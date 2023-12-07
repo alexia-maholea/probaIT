@@ -14,7 +14,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('/login', { email, password });
+      const response = await axios.post('http://127.0.0.1:3001/login', { email, password });
 
       if (response.data.success) {
         onLoginSuccess(response.data.token);

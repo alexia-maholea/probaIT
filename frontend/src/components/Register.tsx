@@ -20,7 +20,7 @@ const Register: React.FC<RegisterProps> = ({ onRegisterSuccess }) => {
         return;
       }
 
-      const response = await axios.post('/register', { email, password });
+      const response = await axios.post('http://127.0.0.1:3001/register', { email, password });
 
       if (response.data.success) {
         onRegisterSuccess(response.data.token);
