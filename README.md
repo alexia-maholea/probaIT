@@ -6,9 +6,9 @@ plăcută în crearea, votarea și gestionarea sondajelor.
 
 # tehnologii
 
-Frontend: React, TypeScript, Bootstrap
-Backend: Node.js, Express, MongoDB
-Autentificare: JWT (JSON Web Token)
+Frontend: React, TypeScript, Bootstrap <br>
+Backend: Node.js, Express, MongoDB <br>
+Autentificare: JWT (JSON Web Token) <br>
 Stilizare: CSS
 
 # BACKEND
@@ -42,24 +42,24 @@ Modalitate de creare a unui sondaj, cu un formular care include întrebarea și 
 
 1. Clonează repository-ul:
 
-git clone https://github.com/alexia-maholea/probaIT.git
+    git clone https://github.com/alexia-maholea/probaIT.git
 
 2. Instalează dependențele:
 
 pentru Backend:
 
-cd backend
-npm install
+    cd backend
+    npm install
 
 pentru Frontend:
 
-cd frontend
-npm install
+    cd frontend
+    npm install
 
 3. Rulează aplicația:
 
-npm start
+    npm start
 
 sau
 
-npm run dev
+    npm run dev
