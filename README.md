@@ -25,17 +25,15 @@ token pentru identificarea acestuia în cererile ulterioare.
 
 # FRONTEND (UI)
 
-    Navbar
+    Navbar | Footer
 Navbar-ul reprezintă bara de navigare a aplicației și furnizează butoane pentru autentificare, înregistrare și creare de sondaje
 pentru utilizatorii logged in.
 
-    Footer
 Footer-ul oferă link-uri utile către pagini ale evenimentului și va fi menținut pe pagina pentru acces facil.
 
-    Login/Register
+    Login/Register | Crearea unui Poll
 Modalități de autentificare și înregistrare pentru utilizatori.
 
-    Crearea unui Poll
 Modalitate de creare a unui sondaj, cu un formular care include întrebarea și opțiunile de răspuns.
 
 # INSTALARE ȘI RULARE
